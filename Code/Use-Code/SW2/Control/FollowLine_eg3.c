@@ -142,14 +142,28 @@ void UpdateStatus()
             ActionHoldPoint(MAX_HOVER_ERR, 500, ActionHoverStartPoint);
         }
         break;
-
         //��ͣ
         case ActionHoverStartPoint:
-            ActionHoldPoint(MAX_HOVER_ERR, 500, ActionGoForward);
+            ActionHoldPoint(MAX_HOVER_ERR, 100, ActionGoForward);
             break;
         //ǰ��3s
         case ActionGoForward:
-            ActionHoldPoint(MAX_HOVER_ERR, 1500, ActionLand);
+            if(FollowManager.ptrFrame->CentPoint.y1 == 0 && FollowManager.ptrFrame->CentPoint.x1 == 0 && FollowManager.ptrFrame->FormType == ApriTag)
+            {
+                FollowManager.ActionList = ActionHoverStartPoint;
+            }
+            else if(FollowManager.ptrFrame->CentPoint.y1 == 0 && FollowManager.ptrFrame->CentPoint.x1 == 100 && FollowManager.ptrFrame->FormType == ApriTag)
+            {
+                FollowManager.ActionList = ActionTurnRound;
+            }
+            else if(FollowManager.ptrFrame->CentPoint.y1 == 100 && FollowManager.ptrFrame->CentPoint.x1 == 100 && FollowManager.ptrFrame->FormType == ApriTag)
+            {
+                FollowManager.ActionList = ActionLand;
+            }
+            break;
+
+        case ActionTurnRound:
+            ActionHoldPoint(MAX_HOVER_ERR, 1000, ActionGoForward);
             break;
 				
         //�Զ�����״̬����ʱ�����Ժ󣬽�����������
@@ -192,12 +206,16 @@ void UpdateAction(float dt)
     case ActionHoverStartPoint:
         //���
         sdk_velocity_reset();
+        sdk_yaw_stop();
         break;
     
 		//round rod column
     case ActionGoForward:
-				sdk_round_set(50 , 180 , 1);
-				break;
+        sdk_velociyt_y_set(20);
+        break;
+    case ActionGoRound:
+		sdk_round_set(75 , 180 , 1);
+		break;
         
 
     //�Զ�����

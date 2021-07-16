@@ -6,7 +6,7 @@
 #include "pid.h"
 #include "gcs.h"
 
-//µ¥Î»:10ms
+//ï¿½ï¿½Î»:10ms
 #define MAX_COUNTDOWN 100 * 8
 #define TARGETALTITUDECM 50
 #define MAX_HOVER_ERR 10
@@ -41,15 +41,15 @@ typedef enum
 
 typedef enum
 {
-    Vertical = 0,        //ÊúÏß
-    Horizontal,          //ºáÏß
-    Cross,               //Ê®×Ö
-    Ttype,               //T×ÖÐÎ
-    TurnTtype,           //µ¹T×ÖÐÎ
-    Ltype,               //L×ÖÐÎ
-    MirrorFlipLtype,     //¾µÏñ·­×ªL×ÖÐÎ
-    TurnLtype,           //µ¹L×ÖÐÎ
-    MirrorFlipTurnLtype, //¾µÏñ·­×ªµ¹L×ÖÐÎ
+    Vertical = 0,        //ï¿½ï¿½ï¿½ï¿½
+    Horizontal,          //ï¿½ï¿½ï¿½ï¿½
+    Cross,               //Ê®ï¿½ï¿½
+    Ttype,               //Tï¿½ï¿½ï¿½ï¿½
+    TurnTtype,           //ï¿½ï¿½Tï¿½ï¿½ï¿½ï¿½
+    Ltype,               //Lï¿½ï¿½ï¿½ï¿½
+    MirrorFlipLtype,     //ï¿½ï¿½ï¿½ï¿½×ªLï¿½ï¿½ï¿½ï¿½
+    TurnLtype,           //ï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½
+    MirrorFlipTurnLtype, //ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½
     LeftTtype,
     ApriTag = 100,
     Pole = 200,
@@ -67,7 +67,7 @@ typedef enum
     ActionTakeOff,
     ActionHoverStartPoint,
 
-    //ÐüÍ£¶¯×÷
+    //ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½
     ActionHoldLtype,
     ActionHoldMirrorFlipLtype,
     ActionHoldTurnLtype,
@@ -79,7 +79,7 @@ typedef enum
     ActionHoldLeftTtype,
     ActionHoldApriTag,
 
-    //·ÉÐÐ¶¯×÷
+    //ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
     ActionGoForward,
     ActionGoRight,
     ActionGoLeft,
@@ -94,7 +94,7 @@ typedef enum
     ActionPreLand,
     ActionStop,
 
-    //Ñ°¸Ë²½Öè
+    //Ñ°ï¿½Ë²ï¿½ï¿½ï¿½
     ActionFindPoleStep1,
     ActionFindPoleStep2,
     ActionFindPoleStep3,
@@ -102,7 +102,7 @@ typedef enum
     ActionFindPoleStep5,
     ActionFindPoleStep6,
 
-    //¸ø»ÆÉ«Ò»Î¬ÂëÅÄÕÕ
+    //ï¿½ï¿½ï¿½ï¿½É«Ò»Î¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     ActionFindoneDimensionalCodeStep1,
     ActionFindoneDimensionalCodeStep2,
     ActionFindoneDimensionalCodeStep3,
@@ -143,7 +143,7 @@ typedef struct
     int16_t y1;
 } Point_t;
 
-//Êý¾Ý½á¹¹ÉùÃ÷
+//ï¿½ï¿½ï¿½Ý½á¹¹ï¿½ï¿½ï¿½ï¿½
 #pragma pack(1)
 typedef struct
 {
@@ -181,23 +181,23 @@ typedef struct
 
 typedef struct
 {
-    //OpenMVÊý¾ÝÖ¡   Í¼ÏñµÄÐÎ×´¡¢Î»ÖÃ
+    //OpenMVï¿½ï¿½ï¿½ï¿½Ö¡   Í¼ï¿½ï¿½ï¿½ï¿½ï¿½×´ï¿½ï¿½Î»ï¿½ï¿½
     OpenMVFrame_t *GroundOpenmvFramePtr;
     OpenMVFrame_t *FrontOpenmvFramePtr;
     OpenMVFrame2_t *FrontOpenmvFramePtr2;
     OpenMVFrame_t *ptrFrame;
-    //·É»úµÄ×´Ì¬
+    //ï¿½É»ï¿½ï¿½ï¿½×´Ì¬
     UAV_info_t *ptrUAVInfo;
 
-    //¶¯×÷ÐòÁÐ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     FSMList_t ActionList;
 
-    //CountDownNumMsµ¹¼ÆÊ±Êý¾Ý
+    //CountDownNumMsï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
     int16_t CountDownNumMs;
     int16_t TargetAltitudeCM;
     int16_t WatchDogCnt;
 
-    //3¸öPID¿ØÖÆÆ÷
+    //3ï¿½ï¿½PIDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     PIDInfo_t *ptrPIDInfoV;
     PIDInfo_t *ptrPIDInfoH;
     PIDInfo_t *ptrPIDInfoY;
