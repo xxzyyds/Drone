@@ -1,13 +1,13 @@
 /*
-±¾³ÌÐòÍê³ÉÒ»¸ö»ù±¾Àú³Ì¶¯×÷£º
-1.µ¹¼ÆÊ±£»
-2.×Ô¶¯Æð·É£»
-3.ÐüÍ££»
-4.Ñ°ÕÒApriTag±ê¼Ç£¬²¢ÇÒ15Sºó½µÂä£»
-5.ÉÏËø£»
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ï¿½ï¿½ï¿½
+1.ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+2.ï¿½Ô¶ï¿½ï¿½ï¿½É£ï¿½
+3.ï¿½ï¿½Í£ï¿½ï¿½
+4.Ñ°ï¿½ï¿½ApriTagï¿½ï¿½Ç£ï¿½ï¿½ï¿½ï¿½ï¿½15Sï¿½ï¿½ï¿½ä£»
+5.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 
-Èç¹ûÓÃ»§ÈÏÎªÒÑ¾­ÕÆÎÕ¸ÃÎÄ¼þÊ¹ÓÃ·½·¨£¬ÇëÉ¾³ý´ËÎÄ¼þ£¬È»ºóÌí¼ÓFollowLine.cÎÄ¼þ
+ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Îªï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Õ¸ï¿½ï¿½Ä¼ï¿½Ê¹ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½FollowLine.cï¿½Ä¼ï¿½
 */
 
 #include "FollowLine.h"
@@ -41,7 +41,7 @@ FollowManager_t FollowManager;
 SonarManager_t SonarManager;
 
 /*
-        |+X »úÍ··½Ïò
+        |+X ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½
         |
         |
 +Y------------- -Y
@@ -90,41 +90,41 @@ void Follow_Init()
     MAP_GPIO_setAsInputPinWithPullUpResistor(GPIO_PORT_P1, GPIO_PIN4);
 }
 
-//ÒÔ100hzµÄËÙ¶ÈÂÖÑ¯ 10ms
+//ï¿½ï¿½100hzï¿½ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½Ñ¯ 10ms
 void UpdateCentControl(float dt)
 {
-    //ÅÐ¶ÏOpenMV·µ»ØµÄÊý¾ÝÊÇ·ñ¿ÉÓÃ£¬ÓÐµÄÊ±ºòOpenMV»á·µ»ØÎÞÐ§Êý¾Ý
+    //ï¿½Ð¶ï¿½OpenMVï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ðµï¿½Ê±ï¿½ï¿½OpenMVï¿½á·µï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½
     if (FollowManager.ptrFrame->CentPoint.x1 > 200 || FollowManager.ptrFrame->CentPoint.y1 > 200)
         return;
 
-    //¸üÐÂ°´Å¥¿ØÖÆÊµ¼ù
+    //ï¿½ï¿½ï¿½Â°ï¿½Å¥ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
     UpdateButton();
 
-    //¸üÐÂ³Ì¿Ø×´Ì¬Ïß
+    //ï¿½ï¿½ï¿½Â³Ì¿ï¿½×´Ì¬ï¿½ï¿½
     UpdateStatus();
 
-    //¸üÐÂ³Ì¿Ø¶¯×÷Ïß
+    //ï¿½ï¿½ï¿½Â³Ì¿Ø¶ï¿½ï¿½ï¿½ï¿½ï¿½
     UpdateAction(dt);
 }
 
-//´Ëº¯ÊýÖ»×ö×´Ì¬ÅÐ¶ÏºÍ×´Ì¬¸üÐÂ
+//ï¿½Ëºï¿½ï¿½ï¿½Ö»ï¿½ï¿½×´Ì¬ï¿½Ð¶Ïºï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
 void UpdateStatus()
 {
-    //¸ù¾ÝActionListµÄÄÚÈÝ£¬½øÈë²»Í¬µÄ×´Ì¬
+    //ï¿½ï¿½ï¿½ï¿½ActionListï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ë²»Í¬ï¿½ï¿½×´Ì¬
     switch (FollowManager.ActionList)
     {
-        //ÅÐ¶Ï
+        //ï¿½Ð¶ï¿½
         case ActionWaitting:
             //Do nothing;
             break;
 
-        //µ¹¼ÆÊ±×´Ì¬
+        //ï¿½ï¿½ï¿½ï¿½Ê±×´Ì¬
         case ActionCountdown:
         {
-            //µ¹¼ÆÊ±£¬Êý¾Ý³õÊ¼Ìî³äÎ»ÓÚFollow_InitÖÐ
+            //ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½Ê¼ï¿½ï¿½ï¿½Î»ï¿½ï¿½Follow_Initï¿½ï¿½
             FollowManager.CountDownNumMs--;
 
-            //µ±µ¹¼ÆÊ±½áÊøÊ±ºò£¬×´Ì¬±ä¸üÎªActionTakeOff
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ÎªActionTakeOff
             if (FollowManager.CountDownNumMs <= 0)
             {
                 FollowManager.ActionList = ActionTakeOff;
@@ -132,28 +132,28 @@ void UpdateStatus()
         }
         break;
 
-        //×Ô¶¯Æð·É×´Ì¬
+        //ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½×´Ì¬
         case ActionTakeOff:
         {
-            //×Ô¶¯Æð·É¶¯×÷³ÖÐøÊ±¼äÎª5s£¨500 * 10ms = 5000ms = 5s£©£¬È»ºóÌøµ½ActionHoverStartPoint¶¯×÷£»
+            //ï¿½Ô¶ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Îª5sï¿½ï¿½500 * 10ms = 5000ms = 5sï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ActionHoverStartPointï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             ActionHoldPoint(MAX_HOVER_ERR, 500, ActionHoverStartPoint);
         }
         break;
 
-        //ÐüÍ£µ½¿ÕÖÐ3S£¬È»ºóÌøµ½×ªÈ¦
+        //ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3Sï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªÈ¦
         case ActionHoverStartPoint:
             ActionHoldPoint(MAX_HOVER_ERR, 300, ActionHoldApriTag);
             break;
-				//×ªÈ¦10s,È»ºó½µÂä
+				//×ªÈ¦10s,È»ï¿½ï¿½ï¿½ï¿½
         case ActionGoRound:
             ActionGORound(MAX_HOVER_ERR, 1000, ActionLand);//1500 * 10ms = 15s 
             break;
 
 
-        //×Ô¶¯½µÂä×´Ì¬µ¹¼ÆÊ±½áÊøÒÔºó£¬½øÈëÉÏËø¶¯×÷
+        //ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ôºó£¬½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         case ActionLand:
         {
-            //µ¹¼ÆÊ±Âß¼­
+            //ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ß¼ï¿½
             static int Cnt = MAX_TIMEOUT1;
 
             if (Cnt-- < 0)
@@ -163,7 +163,7 @@ void UpdateStatus()
         }
         break;
 
-        //ÉÏËø¶¯×÷
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         case ActionLock:
             FollowManager.ActionList = ActionLock;
             break;
@@ -172,24 +172,24 @@ void UpdateStatus()
     }
 }
 
-//Ö»Ö´ÐÐ¶¯×÷
+//Ö»Ö´ï¿½Ð¶ï¿½ï¿½ï¿½
 void UpdateAction(float dt)
 {
     switch (FollowManager.ActionList)
     {
-    //µ¹¼ÆÊ±ÃüÁî
+    //ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
     case ActionWaitting:
         //Do nothing
         break;
 
-    //×Ô¶¯Æð·ÉÃüÁî
+    //ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     case ActionTakeOff:
         sdk_takeoff(80);
         break;
 
-    //ÐüÍ£ÃüÁî
+    //ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½
     case ActionHoverStartPoint:
-        //Æð·É
+        //ï¿½ï¿½ï¿½
         sdk_velocity_reset();
         break;
     case ActionHoldApriTag:
@@ -205,13 +205,13 @@ void UpdateAction(float dt)
         }
         break;
 
-    //×Ô¶¯½µÂä
+    //ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½
     case ActionLand:
-        //½µÂäÃüÁî
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         sdk_land();
         break;
 
-    //ÉÏËø¶¯×÷
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     case ActionLock:
         g_UAVinfo.FMUflg->unlock = 0;
         break;
@@ -223,9 +223,9 @@ void UpdateAction(float dt)
 void HoldCurrentPostion(float dt)
 {
     static float OldPos[2];
-    //¶ÔÊäÈë×öLPF
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½LPF
     
-    //¸üÐÂ²âÁ¿µã
+    //ï¿½ï¿½ï¿½Â²ï¿½ï¿½ï¿½ï¿½ï¿½
     PIDGroup[emPID_FolloLinePosVertically].measured = FollowManager.ptrFrame->CentPoint.y1;
     PIDGroup[emPID_FolloLinePosHorizontally].measured = FollowManager.ptrFrame->CentPoint.x1;
 
@@ -244,7 +244,7 @@ void HoldCurrentPostion(float dt)
     UpdatePID(&PIDGroup[emPID_FolloLineSpdHorizontally], dt);  //PID
     UpdatePID(&PIDGroup[emPID_FolloLineSpdVertically], dt);  //PID
 
-    //ÕâÊÇÎÒÃÇËÙ¶È¿ØÖÆµã
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶È¿ï¿½ï¿½Æµï¿½
     sdk_velocity_set(PIDGroup[emPID_FolloLineSpdVertically].out, PIDGroup[emPID_FolloLineSpdHorizontally].out);
 }
 
@@ -296,13 +296,13 @@ void ActionHoldPoint(int8_t Err, int16_t HoldTime, FSMList_t NextAction)
 
 void UpdateButton()
 {
-    //ÅÐ¶¨Á½¸öÊäÈëÊÇ·ñÓÐÐ§£¬ÆäÊµÊÇÅÐ¶Ï×óÓÒÁ½¸ö°´¼ü
+    //ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     volatile static uint8_t input = 0;
     volatile static uint8_t input2 = 0;
     input = P1IN & BIT1;
     input2 = P1IN & BIT4;
 
-    //ÅÐ¶ÏÑ²Ïß°´Å¥ÊÇ·ñ°´ÏÂ
+    //ï¿½Ð¶ï¿½Ñ²ï¿½ß°ï¿½Å¥ï¿½Ç·ï¿½ï¿½ï¿½
     if (input)
     {
     }
@@ -311,7 +311,7 @@ void UpdateButton()
         FollowLine = true;
     }
 
-    //ÅÐ¶ÏÑ°ÕÒApriTag°´Å¥ÊÇ·ñ°´ÏÂ
+    //ï¿½Ð¶ï¿½Ñ°ï¿½ï¿½ApriTagï¿½ï¿½Å¥ï¿½Ç·ï¿½ï¿½ï¿½
     if (input2)
     {
     }
@@ -320,7 +320,7 @@ void UpdateButton()
         FollowApriTag = true;
     }
 
-    //ÅÐ¶Ïµ±Ç°ÊÇ·ñ±»¶à°´
+    //ï¿½Ð¶Ïµï¿½Ç°ï¿½Ç·ñ±»¶à°´
     if (FollowApriTag == false && FollowLine == false)
     {
         return;
@@ -329,7 +329,7 @@ void UpdateButton()
     {
         static bool CloseGate = true;
 
-        //¶¯×÷Ïß½øÈëµ¹¼ÆÊ±×´Ì¬
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½ëµ¹ï¿½ï¿½Ê±×´Ì¬
         if (CloseGate)
         {
             CloseGate = false;
