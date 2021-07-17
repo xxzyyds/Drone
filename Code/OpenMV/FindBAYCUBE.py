@@ -120,7 +120,7 @@ while(True):
         action2 = 100
 
     # 组帧，发送数据
-    uart.write(UART_Send(key, action1, action2))
+    uart.write(UART_Send(100, 100, 100))
 
     # 打印FPS信息
     print(key , action1 , action2)
