@@ -1,17 +1,17 @@
 /**
   ******************************************************************************
-  * Copyright (c) 2018,±±¾©ÖÐ¿ÆºÆµç¿Æ¼¼ÓÐÏÞ¹«Ë¾
+  * Copyright (c) 2018,ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ÆºÆµï¿½Æ¼ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½Ë¾
   * All rights reserved.
-  * ÎÄ¼þÃû³Æ£ºUART.c
-  * Õª    Òª£º
+  * ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Æ£ï¿½UART.c
+  * Õª    Òªï¿½ï¿½
   *
-  * µ±Ç°°æ±¾£ºV1.0
-  * ×÷    Õß£º±±¾©ÖÐ¿ÆºÆµç¿Æ¼¼ÓÐÏÞ¹«Ë¾ÑÐ·¢²¿ 
-  * Íê³ÉÈÕÆÚ£º    
-  * ÐÞ¸ÄËµÃ÷£º
+  * ï¿½ï¿½Ç°ï¿½æ±¾ï¿½ï¿½V1.0
+  * ï¿½ï¿½    ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ÆºÆµï¿½Æ¼ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½Ë¾ï¿½Ð·ï¿½ï¿½ï¿½ 
+  * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½    
+  * ï¿½Þ¸ï¿½Ëµï¿½ï¿½ï¿½ï¿½
   * 
   *
-  * ÀúÊ·°æ±¾£º
+  * ï¿½ï¿½Ê·ï¿½æ±¾ï¿½ï¿½
   *
   *
   *******************************************************************************/
@@ -19,10 +19,10 @@
 /*==============================================================================
                          ##### How to use this driver #####
 ==============================================================================
-´¦Àí´®¿ÚµÄÏà¹ØÊÂÇé
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 */
-//Íâ²¿ÎÄ¼þÒýÓÃ
+//ï¿½â²¿ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 #include "HARDWARE_uart.h"
 #include "msp.h"
 #include "pid.h"
@@ -47,17 +47,17 @@ void UART_A2_ReceiveHandle(uint8_t *ptr, uint8_t length);
 void UART_A3_ReceiveHandle(uint8_t *ptr, uint8_t length);
 
 /******************************************************************************
-  * º¯ÊýÃû³Æ£ºUSART_Init
-  * º¯ÊýÃèÊö£º´®¿Ú³õÊ¼»¯
-  * Êä    Èë£ºvoid
-  * Êä    ³ö£ºvoid
-  * ·µ    »Ø£ºvoid
-  * ±¸    ×¢£ºTI¹«Ë¾Í¨¹ýÒÔÏÂÍøÖ·Ìá¹©¸øÓÃ»§²¨ÌØÂÊÅäÖÃÐÅÏ¢
+  * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½USART_Init
+  * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½Ê¼ï¿½ï¿½
+  * ï¿½ï¿½    ï¿½ë£ºvoid
+  * ï¿½ï¿½    ï¿½ï¿½ï¿½ï¿½void
+  * ï¿½ï¿½    ï¿½Ø£ï¿½void
+  * ï¿½ï¿½    ×¢ï¿½ï¿½TIï¿½ï¿½Ë¾Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½á¹©ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
   * http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430BaudRateConverter/index.html
-  * A2Á¬½ÓS.BUS×ÜÏß£¬²¨ÌØÂÊÎª100K    
-  * A0Á¬½ÓANO¹âÁ÷£¬²¨ÌØÂÊÎª115200
-  * A3Á¬½ÓOpenMV£¬²¨ÌØÂÊ115200
-  * A1Á¬½ÓÊý´«£¬²¨ÌØÂÊ115200
+  * A2ï¿½ï¿½ï¿½ï¿½S.BUSï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª100K    
+  * A0ï¿½ï¿½ï¿½ï¿½ANOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª115200
+  * A3ï¿½ï¿½ï¿½ï¿½OpenMVï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½115200
+  * A1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½115200
 ******************************************************************************/
 
 void *A1ReceiveHandle;
@@ -102,7 +102,7 @@ void USART_Init()
             EUSCI_A_UART_OVERSAMPLING_BAUDRATE_GENERATION // Oversampling
         };
 
-    //Á¬½ÓÊý´«µ½ÉÏÎ»»ú  baud:115200
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½  baud:115200
     eUSCI_UART_Config uartConfigA3 =
         {
             EUSCI_A_UART_CLOCKSOURCE_SMCLK,               // SMCLK Clock Source
@@ -137,7 +137,7 @@ void USART_Init()
     MAP_UART_enableInterrupt(EUSCI_A0_BASE, EUSCI_A_UART_RECEIVE_INTERRUPT);
     MAP_UART_enableInterrupt(EUSCI_A0_BASE, EUSCI_A_UART_TRANSMIT_INTERRUPT);
 
-    //³õÊ¼»¯A3´®¿ÚÒý½Å¡¢³õÊ¼»¯Ä£¿é¡¢Ê¹ÄÜÄ£¿é¡¢Ê¹ÄÜÖÐ¶Ï
+    //ï¿½ï¿½Ê¼ï¿½ï¿½A3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¡ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ä£ï¿½é¡¢Ê¹ï¿½ï¿½Ä£ï¿½é¡¢Ê¹ï¿½ï¿½ï¿½Ð¶ï¿½
     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P9,
                                                    GPIO_PIN6 | GPIO_PIN7, GPIO_PRIMARY_MODULE_FUNCTION);
     MAP_UART_initModule(EUSCI_A3_BASE, &uartConfigA3);
@@ -145,7 +145,7 @@ void USART_Init()
     MAP_UART_enableInterrupt(EUSCI_A3_BASE, EUSCI_A_UART_RECEIVE_INTERRUPT);
     MAP_UART_enableInterrupt(EUSCI_A3_BASE, EUSCI_A_UART_TRANSMIT_INTERRUPT);
 
-    //³õÊ¼»¯A1´®¿ÚÒý½Å¡¢³õÊ¼»¯Ä£¿é¡¢Ê¹ÄÜÄ£¿é¡¢Ê¹ÄÜÖÐ¶Ï
+    //ï¿½ï¿½Ê¼ï¿½ï¿½A1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¡ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ä£ï¿½é¡¢Ê¹ï¿½ï¿½Ä£ï¿½é¡¢Ê¹ï¿½ï¿½ï¿½Ð¶ï¿½
     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P2,
                                                    GPIO_PIN2 | GPIO_PIN3, GPIO_PRIMARY_MODULE_FUNCTION);
     MAP_UART_initModule(EUSCI_A1_BASE, &uartConfigA1);
@@ -153,7 +153,7 @@ void USART_Init()
     MAP_UART_enableInterrupt(EUSCI_A1_BASE, EUSCI_A_UART_RECEIVE_INTERRUPT);
     MAP_UART_enableInterrupt(EUSCI_A1_BASE, EUSCI_A_UART_TRANSMIT_INTERRUPT);
 
-    //³õÊ¼»¯´®¿ÚºóÔÙÊ¹ÄÜÖÐ¶Ï
+    //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½Ð¶ï¿½
     MAP_Interrupt_enableInterrupt(INT_EUSCIA0);
     MAP_Interrupt_enableInterrupt(INT_EUSCIA1);
     MAP_Interrupt_enableInterrupt(INT_EUSCIA2);
@@ -177,12 +177,12 @@ void USART_Init()
 }
 
 /******************************************************************************
-  * º¯ÊýÃû³Æ£ºPollingUSART
-  * º¯ÊýÃèÊö£ºÂÖÑ¯´®¿Ú½ÓÊÕÐÅÏ¢
-  * Êä    Èë£ºvoid
-  * Êä    ³ö£ºvoid
-  * ·µ    »Ø£ºvoid
-  * ±¸    ×¢£ºÕû¸öÏµÍ³ÓëÉÏÎ»»úÍ¨ÐÅ£¬´Ë´¦ÎªÈë¿Ú
+  * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½PollingUSART
+  * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+  * ï¿½ï¿½    ï¿½ë£ºvoid
+  * ï¿½ï¿½    ï¿½ï¿½ï¿½ï¿½void
+  * ï¿½ï¿½    ï¿½Ø£ï¿½void
+  * ï¿½ï¿½    ×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Í¨ï¿½Å£ï¿½ï¿½Ë´ï¿½Îªï¿½ï¿½ï¿½
   *
   *
 ******************************************************************************/
@@ -222,15 +222,15 @@ void PollingUSART()
 }
 
 /******************************************************************************
-  * º¯ÊýÃû³Æ£ºUSART_TX
-  * º¯ÊýÃèÊö£ºÒÔÖÐ¶ÏµÄ·½Ê½·¢ËÍÊý¾Ý
-  * Êä    Èë£º
-  * Usart_t usart:Ñ¡ÔñÒª·¢ËÍÊý¾ÝµÄÄ£¿é
-  * uint8_t *ptx:Òª·¢ËÍµÄÊý¾ÝµØÖ·
-  * uint8_t len:Òª·¢ËÍµÄÊý¾Ý³¤¶È
-  * Êä    ³ö£ºvoid
-  * ·µ    »Ø£ºvoid
-  * ±¸    ×¢£ºnull
+  * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½USART_TX
+  * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ÏµÄ·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  * ï¿½ï¿½    ï¿½ë£º
+  * Usart_t usart:Ñ¡ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½Ä£ï¿½ï¿½
+  * uint8_t *ptx:Òªï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½Ýµï¿½Ö·
+  * uint8_t len:Òªï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½
+  * ï¿½ï¿½    ï¿½ï¿½ï¿½ï¿½void
+  * ï¿½ï¿½    ï¿½Ø£ï¿½void
+  * ï¿½ï¿½    ×¢ï¿½ï¿½null
   *
   *
 ******************************************************************************/
@@ -247,12 +247,12 @@ void USART_TX(Usart_t *usart, uint8_t *pTx, uint8_t len)
 }
 
 /******************************************************************************
-  * º¯ÊýÃû³Æ£ºEUSCIA2_IRQHandler
-  * º¯ÊýÃèÊö£ºEUSCIA2¶Ï·þÎñº¯Êý
-  * Êä    Èë£ºvoid
-  * Êä    ³ö£ºvoid
-  * ·µ    »Ø£ºvoid
-  * ±¸    ×¢£ºSBUS´¦Àíº¯Êý
+  * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½EUSCIA2_IRQHandler
+  * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½EUSCIA2ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½
+  * ï¿½ï¿½    ï¿½ë£ºvoid
+  * ï¿½ï¿½    ï¿½ï¿½ï¿½ï¿½void
+  * ï¿½ï¿½    ï¿½Ø£ï¿½void
+  * ï¿½ï¿½    ×¢ï¿½ï¿½SBUSï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   *
   *
 ******************************************************************************/
@@ -416,14 +416,14 @@ void EUSCIA3_IRQHandler(void)
     }
 }
 
-//* A0Á¬½ÓANO¹âÁ÷£¬²¨ÌØÂÊÎª115200
+//* A0ï¿½ï¿½ï¿½ï¿½ANOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª115200
 #include "ANO_DT.h"
 void UART_A0_ReceiveHandle(uint8_t *ptr, uint8_t length)
 {
     ANO_DT_Data_Receive_Anl(ptr, length);
 }
 
-//  * A2Á¬½ÓS.BUS×ÜÏß£¬²¨ÌØÂÊÎª100K   
+//  * A2ï¿½ï¿½ï¿½ï¿½S.BUSï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª100K   
 void UART_A2_ReceiveHandle(uint8_t *ptr, uint8_t length)
 {
     memcpy(SBusRxBuff, ptr, length);
@@ -434,15 +434,18 @@ extern u16 val, spd;
 extern _program_ctrl_st program_ctrl;
 extern FollowManager_t FollowManager;
 extern SonarManager_t SonarManager;
-//* A3Á¬½ÓOpenMV£¬²¨ÌØÂÊ115200
 void UART_A3_ReceiveHandle(uint8_t *ptr, uint8_t length)
 {
-    
+    for(int i=0;i<length;i++)
+	{
+		if(*ptr==0xAA && *(ptr+1)==0xAA)
+			FollowManager.ptrFrame = (OpenMVFrame_t *)(ptr+i);
+	}
 }
 
-//  * A1Á¬½Ó³¯Ç°OpenMV£¬²¨ÌØÂÊ115200
+//  * A1ï¿½ï¿½ï¿½Ó³ï¿½Ç°OpenMVï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½115200
 void UART_A1_ReceiveHandle(uint8_t *ptr, uint8_t length)
 {
     //ano gcs
 }
-/******************* (C) °æÈ¨ËùÓÐ 2018 ±±¾©ÖÐ¿ÆºÆµç¿Æ¼¼ÓÐÏÞ¹«Ë¾ *******************/
+/******************* (C) ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ 2018 ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ÆºÆµï¿½Æ¼ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½Ë¾ *******************/
