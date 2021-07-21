@@ -140,14 +140,26 @@ void UpdateStatus()
         }
         break;
 
-        //悬停到空中5S，然后跳到自动降落状态
         case ActionHoverStartPoint:
-            ActionHoldPoint(MAX_HOVER_ERR, 300, ActionHoldApriTag);
+            ActionHoldPoint(MAX_HOVER_ERR, 300,ActionGoRight);
+            break;
+        case ActionGoRight:
+            if(FollowManager.ptrFrame->FormType == 100 && FollowManager.ptrFrame->CentPoint.y1 == 1)
+                P2OUT |= GPIO_PIN1;
+            if(FollowManager.ptrFrame->FormType == 100 && FollowManager.ptrFrame->CentPoint.y1 == 2)
+                FollowManager.ActionList = ActionFindPoleStep1;
+            if(FollowManager.ptrFrame->FormType == 100 && FollowManager.ptrFrame->CentPoint.y1 == 3)
+                FollowManager.ActionList = ActionFindPoleStep2;
+            if(FollowManager.ptrFrame->FormType == 100 && FollowManager.ptrFrame->CentPoint.y1 == 4)
+                FollowManager.ActionList = ActionFindPoleStep1;
+            if(FollowManager.ptrFrame->FormType == 100 && FollowManager.ptrFrame->CentPoint.y1 == 5)
+                ActionHoldPoint(MAX_HOVER_ERR, 300,ActionLand);
             break;
 
-        case ActionHoldApriTag:
-            ActionHoldPoint(MAX_HOVER_ERR, 15000, ActionLand);
-            break;
+        case ActionFindPoleStep1:
+            ActionHoldPoint(MAX_HOVER_ERR,300,ActionGoRight);
+        case ActionFindPoleStep2:
+            ActionHoldPoint(MAX_HOVER_ERR,1000,ActionGoRight);
 
 
         //自动降落状态倒计时结束以后，进入上锁动作
@@ -184,7 +196,7 @@ void UpdateAction(float dt)
 
     //自动起飞命令
     case ActionTakeOff:
-        sdk_takeoff(80);
+        sdk_takeoff(100);
         break;
 
     //悬停命令
@@ -192,22 +204,20 @@ void UpdateAction(float dt)
         //起飞
         sdk_velocity_reset();
         break;
-    case ActionHoldApriTag:
-        if (FollowManager.ptrFrame->FormType == ApriTag)
-        {
-            PIDGroup[emPID_FolloLinePosVertically].desired = 120 / 2;
-            PIDGroup[emPID_FolloLinePosHorizontally].desired = 160 / 2;
-            
-            HoldCurrentPostion(dt);
-        }
-        else
-        {
-            sdk_velocity_reset();
-        }
+        
+    case ActionGoRight:
+        sdk_velociyt_y_set(20);
+        break;
+    case ActionFindPoleStep1:
+        break;
+    case ActionFindPoleStep2:
+        sdk_velociyt_reset();
+        sdk_round_set(70,180,1);
         break;
 
     //自动降落
     case ActionLand:
+        sdk_velocity_reset();
         //降落命令
         sdk_land();
         break;
